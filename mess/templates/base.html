@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>Shijin</h1>
+    {% if user.is_authenticated %}
+        <!-- Show Logout Button if user is logged in -->
+        <a href="{% url 'logout' %}">
+            <button type="button">Logout</button>
+        </a>
+    {% else %}
+        <!-- Show Login Button if user is not logged in -->
+        <a href="{% url 'login' %}">
+            <button type="button">Login</button>
+        </a>
+    {% endif %}
+    
     {% block content %}
     
     {% endblock content %}

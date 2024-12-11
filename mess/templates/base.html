@@ -4,23 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body,html{
+            height:100%;
+        }
+        .log_in_out
+        {
+            position:absolute;
+            top:20px;
+            right:20px;
+        }
+        .container {
+            display: flex;
+            height: 100%;
+            gap: 10px;
+        }
+        .slide {
+            flex: 1; /* Each slide takes up 50% of the space */
+            padding: 20px;
+            overflow: auto;
+            height:60%;
+            border-radius: 20px;
+        }
+        
+        .left-slide {
+            position: relative; /* Make the slide a positioned container for absolute positioning */
+            flex: 1;            /* Ensure it takes up the intended space in the flex container */
+            overflow: hidden;   /* Prevent the image from spilling outside */
+            display: flex;      /* Optional: Flexbox for aligning text */
+            align-items: center; /* Optional: Vertically center text */
+            justify-content: center; /* Optional: Horizontally center text */
+            height: 100%;       /* Ensure the slide takes full height of its container */
+        }
+        
+        /* Style for the image to fit inside .left-slide */
+        .left-slide img {
+            width: 100%;         /* Make the image fill the width of the .left-slide */
+            height: 100%;        /* Make the image fill the height of the .left-slide */
+            object-fit: cover;   /* Ensure the image scales properly without distortion */
+            position: absolute;  /* Place the image inside the container without affecting layout */
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+        }
+        
+        /* Style for the heading over the image */
+        .left-slide h2 {
+            position: absolute;  /* Position the heading over the image */
+            color: white;        /* Text color for visibility */
+            font-size: 2rem;     /* Adjust font size */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+            padding: 10px 20px;  /* Add spacing around the text */
+            border-radius: 5px;  /* Optional: Rounded edges for better appearance */
+            z-index: 1;          /* Ensure the heading appears above the image */
+        }
+        .right-slide {
+            position: relative; /* Make the slide a positioned container for absolute positioning */
+            flex: 1;            /* Ensure it takes up the intended space in the flex container */
+            overflow: hidden;   /* Prevent the image from spilling outside */
+            display: flex;      /* Optional: Flexbox for aligning text */
+            align-items: center; /* Optional: Vertically center text */
+            justify-content: center; /* Optional: Horizontally center text */
+            height: 100%;       /* Ensure the slide takes full height of its container */
+        }
+        
+        /* Style for the image to fit inside .left-slide */
+        .right-slide img {
+            width: 100%;         /* Make the image fill the width of the .left-slide */
+            height: 100%;        /* Make the image fill the height of the .left-slide */
+            object-fit: cover;   /* Ensure the image scales properly without distortion */
+            position: absolute;  /* Place the image inside the container without affecting layout */
+            top: 0;
+            left: 0;
+            border-radius: 20px;
+        }
+        
+        /* Style for the heading over the image */
+        .right-slide h2 {
+            position: absolute;  /* Position the heading over the image */
+            color: white;        /* Text color for visibility */
+            font-size: 2rem;     /* Adjust font size */
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+            padding: 10px 20px;  /* Add spacing around the text */
+            border-radius: 5px;  /* Optional: Rounded edges for better appearance */
+            z-index: 1;          /* Ensure the heading appears above the image */
+        }
+    </style>
 </head>
 <body>
-    <h1>Shijin</h1>
+    <h1 align=center>DINE_EASE</h1>
     {% if user.is_authenticated %}
-        <!-- Show Logout Button if user is logged in -->
-        <a href="{% url 'logout' %}">
+        <a href="{% url 'logout' %}" class = "log_in_out">
             <button type="button">Logout</button>
         </a>
     {% else %}
-        <!-- Show Login Button if user is not logged in -->
-        <a href="{% url 'login' %}">
+        <a href="{% url 'login' %}"  class = "log_in_out">
             <button type="button">Login</button>
         </a>
     {% endif %}
     
-    {% block content %}
-    
-    {% endblock content %}
+    <div class="container">
+        <div class="slide left-slide">
+            <h2>Mess bill</h2>
+            <img src="https://i.ytimg.com/vi/yl4IaOl9oHU/maxresdefault.jpg">
+        </div>
+
+        <!-- Right slide -->
+        <div class="slide right-slide">
+            <h2>Mess out register</h2>
+            <img src="https://www.hansrajcollege.ac.in/uploads/infrastructure/facilities/canteen/2A7A3381.jpg">
+        </div>
+    </div>
 </body>
 </html>

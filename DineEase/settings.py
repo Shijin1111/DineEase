@@ -124,6 +124,8 @@ STATICFILES_DIRS = [STATIC_DIR,]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+LOGIN_URL = '/login'  # Adjust if necessary
+
 
 RAZORPAY_KEY_ID = 'rzp_test_sn6Fqtodc70EhP'
 RAZORPAY_KEY_SECRET = 'xQA0nVKGtTs1PoXuWGoZviey'

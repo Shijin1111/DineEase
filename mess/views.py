@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 from .forms import Mess_out_form
 from .models import Mess_Out,Mess_Bill
+from django.contrib.auth.decorators import login_required
 import razorpay
 # Create your views here.
 def base_view(request):
@@ -27,12 +28,13 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+@login_required
 def mess_bill_view(request):
     inmate = request.user.inmate
     mess_bills = Mess_Bill.objects.filter(inmate=inmate)
     return render(request,'mess_bill.html',{'mess_bills':mess_bills})
 
-
+@login_required
 def mess_out_view(request):
     if request.method == 'POST':
         form = Mess_out_form(request.POST)
